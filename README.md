@@ -41,7 +41,8 @@ open your using browser and visit `http://localhost:3000`
 - send and receive json data.
 - add /status endpoint with post method
 - this endpoint returns only status code.
-- if not stored any data in req.body, server returns status code 400(bad request).
-- else, server returns status code 200.
+- test request sends `{value: 100}`.
+- if `req.body.value` > 100, server returns status code 200.
+- else, server returns status code 400.
 > [!NOTE]
 > use `src/test_post.js` to check the server is working.
