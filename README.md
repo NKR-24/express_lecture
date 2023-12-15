@@ -39,7 +39,9 @@ open your using browser and visit `http://localhost:3000`
 
 ## exercise 2
 - send and receive json data.
-- add /post endpoint with post method
+- add /status endpoint with post method
 - this endpoint returns only status code.
 - if not stored any data in req.body, server returns status code 400(bad request).
 - else, server returns status code 200.
+> [!NOTE]
+> use `src/test_post.js` to check the server is working.
