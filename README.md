@@ -25,9 +25,11 @@ open your using browser and visit `http://localhost:3000`
 
 ## read src/app.js
 > open `src/app.js`  
-> this file is the main code of express server
+> this file is the main code of express server  
 > understand the flow by reading docstring and comment out 
 
+
+## exercise
 > [!IMPORTANT]
 > do not push your exercise answer
 
