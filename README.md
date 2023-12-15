@@ -25,4 +25,13 @@ open your using browser and visit `http://localhost:3000`
 
 ## read src/app.js
 
-## exercise
+## exercise 1
+- add /hello endpoint with get method
+- this endpoint returns simple text "hello".
+- this endpoint shows `requested from ${ipaddr}` for server console.  
+
+> [!TIP]
+> client ip address is sotored in `req`
+
+## exercise 2
+- send and receive json data.
