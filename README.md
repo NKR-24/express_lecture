@@ -25,13 +25,24 @@ open your using browser and visit `http://localhost:3000`
 
 ## read src/app.js
 
+> [!IMPORTANT]
+> do not push your exercise answer
+
 ## exercise 1
 - add /hello endpoint with get method
 - this endpoint returns simple text "hello".
 - this endpoint shows `requested from ${ipaddr}` for server console.  
 
 > [!TIP]
-> client ip address is sotored in `req`
+> client ip address is sotored in `req`.
+> you have to define ipaddr. `const ipaddr = ?????`
 
 ## exercise 2
 - send and receive json data.
+- add /status endpoint with post method
+- this endpoint returns only status code.
+- test request sends `{value: 100}`.
+- if `req.body.value` > 100, server returns status code 200.
+- else, server returns status code 400.
+> [!NOTE]
+> use `src/test_post.js` to check the server is working.
