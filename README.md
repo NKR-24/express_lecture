@@ -24,12 +24,14 @@ if you not in /express_lecture, move to it.
 open your using browser and visit `http://localhost:3000`
 
 ## read src/app.js
+> open `src/app.js`
+> this file is the main code of express
 
 > [!IMPORTANT]
 > do not push your exercise answer
 
 ## exercise 1
-- add /hello endpoint with get method
+- add `/hello` endpoint with get method
 - this endpoint returns simple text "hello".
 - this endpoint shows `requested from ${ipaddr}` for server console.  
 
@@ -39,9 +41,9 @@ open your using browser and visit `http://localhost:3000`
 
 ## exercise 2
 - send and receive json data.
-- add /status endpoint with post method
+- add `/status` endpoint with post method
 - this endpoint returns only status code.
-- test request sends `{value: 100}`.
+- test request(`src/test_post.js`) sends `{value: 100}`.  
 - if `req.body.value` > 100, server returns status code 200.
 - else, server returns status code 400.
 > [!NOTE]
