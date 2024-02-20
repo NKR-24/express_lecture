@@ -1,53 +1,61 @@
 # express_lecture
 
-## setup
-1.  clone this repository  
-`cd <your working directory>`  
-`git clone https://github.com/kento-nkr/express_lecture`
-2. open this program  
-`cd express_lecture`
-3. check node is installed  
-`node -v`  
-result will be `v18.xx.x`  
-if node is not installed, you must [install it](https://qiita.com/echolimitless/items/83f8658cf855de04b9ce) before after lecture.  
-5. install dependecy files  
-just run `npm install`
+## セットアップ
+1. 以下のリポジトリをクローンします
+```sh
+cd 任意のディレクトリ
+git clone https://github.com/kento-nkr/express_lecture
+```
+3. プログラムのあるディレクトリを開きます  
+```sh
+cd express_lecture
+```
+5. Node.js がインストールされているか確認します  
+```sh
+node -v
+```
+結果は ```v18.xx.x``` になります  
+Node.js がインストールされていない場合は、[インストールしてください](https://qiita.com/echolimitless/items/83f8658cf855de04b9ce)。  
+7. 依存ファイルをインストールします  
+`npm install` を実行します
 
-## test run  
-1. check current directory  
+## テスト実行  
+1. 現在のディレクトリを確認します  
 `pwd`  
--> result will be `<your working directory>/express_lecture`  
-if you not in /express_lecture, move to it.
-2. run server  
-`node src/app.js`  
-3. send request to server  
-open your using browser and visit `http://localhost:3000`
+-> 結果は `任意のディレクトリ/express_lecture` になります  
+もし /express_lecture にいない場合は、移動してください。
+2. サーバーを実行します  
+```sh
+node src/app.js
+```  
+4. サーバーにリクエストを送信します  
+ウェブブラウザを開き、`http://localhost:3000`へアクセスする
 
-## read src/app.js
-> - open `src/app.js`  
-> - this file is the main code of express server  
-> - understand the flow by reading docstring and comment out 
+## src/app.js の読み込み
+> - `src/app.js` を開きます  
+> - このファイルは Express サーバーのメインコードです  
+> - ドキュメント文字列やコメントを読んで、フローを理解します  
 
 
-## exercise
+## 練習
 > [!IMPORTANT]
-> do not push your exercise answer
+> 練習の解答をgithubにpushしないでください
 
-## exercise 1
-- add `/hello` endpoint with get method
-- this endpoint returns simple text "hello".
-- this endpoint shows `requested from ${ipaddr}` for server console.  
+## 練習 1
+- `/hello` エンドポイントを追加します（GET メソッド）
+- このエンドポイントは単純なテキスト "hello" を返します。
+- このエンドポイントは、サーバーコンソールに `requested from ${ipaddr}` を表示します。  
 
 > [!TIP]
-> client ip address is sotored in `req`.
-> you have to define ipaddr. `const ipaddr = ?????`
+> クライアントの IP アドレスは `req` に保存されています。
+> `ipaddr` を定義する必要があります。 `const ipaddr = ?????`
 
-## exercise 2
-- send and receive json data.
-- add `/status` endpoint with post method
-- this endpoint returns only status code.
-- test request(`src/test_post.js`) sends `{value: 100}`.  
-- if `req.body.value` > 100, server returns status code 200.
-- else, server returns status code 400.
+## 練習 2
+- JSON データを送受信します。
+- `/status` エンドポイントを追加します（POST メソッド）
+- このエンドポイントはステータスコードのみを返します。
+- テストリクエスト(`src/test_post.js`)は `{value: 100}` を送信します。  
+- もし `req.body.value` > 100 なら、サーバーはステータスコード 200 を返します。
+- そうでない場合は、サーバーはステータスコード 400 を返します。
 > [!NOTE]
-> use `src/test_post.js` to check the server is working.
+> サーバーが正しく動作しているかを確認するには、`src/test_post.js` を使用します。
