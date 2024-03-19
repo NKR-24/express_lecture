@@ -6,17 +6,17 @@
 cd 任意のディレクトリ
 git clone https://github.com/kento-nkr/express_lecture
 ```
-3. プログラムのあるディレクトリを開きます  
+2. プログラムのあるディレクトリを開きます  
 ```sh
 cd express_lecture
 ```
-5. Node.js がインストールされているか確認します  
+3. Node.js がインストールされているか確認します  
 ```sh
 node -v
 ```
 結果は ```v18.xx.x``` になります  
 Node.js がインストールされていない場合は、[インストールしてください](https://qiita.com/echolimitless/items/83f8658cf855de04b9ce)。  
-7. 依存ファイルをインストールします  
+4. 依存ファイルをインストールします  
 `npm install` を実行します
 
 ## テスト実行  
@@ -28,7 +28,7 @@ Node.js がインストールされていない場合は、[インストール�
 ```sh
 node src/app.js
 ```  
-4. サーバーにリクエストを送信します  
+3. サーバーにリクエストを送信します  
 ウェブブラウザを開き、`http://localhost:3000`へアクセスする
 
 ## src/app.js の読み込み
