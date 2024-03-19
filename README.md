@@ -2,22 +2,23 @@
 
 ## セットアップ
 1. 以下のリポジトリをクローンします
-```sh
-cd 任意のディレクトリ
-git clone https://github.com/kento-nkr/express_lecture
-```
+  ```sh
+  cd 任意のディレクトリ
+  git clone https://github.com/kento-nkr/express_lecture
+  ```
 2. プログラムのあるディレクトリを開きます  
-```sh
-cd express_lecture
-```
+  ```sh
+  cd express_lecture
+  ```
 3. Node.js がインストールされているか確認します  
-```sh
-node -v
-```
-結果は ```v18.xx.x``` になります  
-Node.js がインストールされていない場合は、[インストールしてください](https://qiita.com/echolimitless/items/83f8658cf855de04b9ce)。  
-4. 依存ファイルをインストールします  
-`npm install` を実行します
+  ```sh
+  node -v
+  ```
+4. 結果は ```v18.xx.x``` になります  
+   Node.js がインストールされていない場合は、[インストールしてください](https://qiita.com/echolimitless/items/83f8658cf855de04b9ce)。 
+  
+5. 依存ファイルをインストールします  
+  `npm install` を実行します
 
 ## テスト実行  
 1. 現在のディレクトリを確認します  
