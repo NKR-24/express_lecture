@@ -1,62 +1,104 @@
 # express_lecture
 
+
+
 ## セットアップ
-1. 以下のリポジトリをクローンします
-  ```sh
-  cd 任意のディレクトリ
-  git clone https://github.com/kento-nkr/express_lecture
-  ```
-2. プログラムのあるディレクトリを開きます  
-  ```sh
-  cd express_lecture
-  ```
-3. Node.js がインストールされているか確認します  
+
+1. Node.js がインストールされているか確認します  
   ```sh
   node -v
   ```
-4. 結果は ```v18.xx.x``` になります  
+
+2. 結果は ```v18.xx.x``` になります  
    Node.js がインストールされていない場合は、[インストールしてください](https://qiita.com/echolimitless/items/83f8658cf855de04b9ce)。 
   
-5. 依存ファイルをインストールします  
-  `npm install` を実行します
+3. インストール
+  ```sh
+  cd 任意のディレクトリ
+  git clone https://github.com/kento-nkr/express_lecture
+  cd express_lecture
+  npm install
+  ```
 
-## テスト実行  
-1. 現在のディレクトリを確認します  
-`pwd`  
--> 結果は `任意のディレクトリ/express_lecture` になります  
-もし /express_lecture にいない場合は、移動してください。
-2. サーバーを実行します  
+4. .envファイルを作成し，内容を記述
+  ```sh
+  touch .env
+  ```
+  ```sh
+  # .env
+  GOOGLE_CLIENT_ID=GCPコンソールで取得
+  GOOGLE_CLIENT_SECRET=GCPコンソールで取得
+  SECRET_KEY=任意の文字列
+  ```
+
+5. サーバーを起動
 ```sh
-node src/app.js
+node app.js
 ```  
-3. サーバーにリクエストを送信します  
-ウェブブラウザを開き、`http://localhost:3000`へアクセスする
 
-## src/app.js の読み込み
-> - `src/app.js` を開きます  
-> - このファイルは Express サーバーのメインコードです  
-> - ドキュメント文字列やコメントを読んで、フローを理解します  
+6. OAuth認証
+  ウェブブラウザを開き、[http://localhost:3000/auth/google](http://localhost:3000/auth/google)へアクセス
 
+## 自分のサーバーにOAuth認証を設定する方法
+1. コンソールの設定は上記を参照
 
-## 練習
-> [!IMPORTANT]
-> 練習の解答をgithubにpushしないでください
+2. ライブラリのインストール
+   ```sh
+    npm install axios cookie-parser cors dotenv express express-session jsonwebtoken passport passport-google-oauth20 request uuid
+   ```
 
-## 練習 1
-- `/hello` エンドポイントを追加します（GET メソッド）
-- このエンドポイントは単純なテキスト "hello" を返します。
-- このエンドポイントは、サーバーコンソールに `requested from ${ipaddr}` を表示します。  
+3. 以下のファイルを追加
+   - .env
+   - src/auth.js
+   - src/auth_routes.js
+   - src/passport_setup.js
 
-> [!TIP]
-> クライアントの IP アドレスは `req` に保存されています。
-> `ipaddr` を定義する必要があります。 `const ipaddr = ?????`
+4. app.pyに以下を追加
+    <details>
+    <summary>コードを表示</summary>
 
-## 練習 2
-- JSON データを送受信します。
-- `/status` エンドポイントを追加します（POST メソッド）
-- このエンドポイントはステータスコードのみを返します。
-- テストリクエスト(`src/test_post.js`)は `{value: 100}` を送信します。  
-- もし `req.body.value` > 100 なら、サーバーはステータスコード 200 を返します。
-- そうでない場合は、サーバーはステータスコード 400 を返します。
-> [!NOTE]
-> サーバーが正しく動作しているかを確認するには、`src/test_post.js` を使用します。
+    ```js
+    require("dotenv").config();
+    const express = require("express");
+    const bodyParser = require("body-parser");
+    const cookieParser = require("cookie-parser");
+    const session = require("express-session");
+    const passport = require("./src/passport_setup");
+    const verifyToken = require("./src/auth");
+    const authRoutes = require("./src/auth_routes");
+
+    const SERVER_PORT = process.env.SERVER_PORT || 3000;
+    const BINDING_PORT = "0.0.0.0";
+    const APP = express();
+
+    APP.use(bodyParser.json());
+
+    // Add the cookieParser and session middleware
+    APP.use(cookieParser());
+    APP.use(
+      session({
+        secret: process.env.SECRET_KEY,
+        resave: false,
+        saveUninitialized: true,
+        cookie: { secure: process.env.NODE_ENV === "production" },
+      })
+    );
+    APP.use(passport.initialize());
+    APP.use(passport.session());
+
+    APP.use("/auth", authRoutes);
+    ```
+
+    </details>
+
+5. auth保護したいエンドポイントに，verifyTokenをミドルウェアとして追加
+    <details>
+    <summary>コードを表示</summary>
+
+    ```js
+    APP.get("/profile", verifyToken, (req, res) => {
+      res.status(200).send(`Hello, ${req.user.id}, this is the profile route!`);
+    });
+    ```
+    - getやpostの第二引数にverifyTokenを追加することで，認証を行うことができる
+    </details>
