@@ -18,7 +18,7 @@
 2. 結果は ```v18.xx.x``` になります  
    Node.js がインストールされていない場合は、[インストールしてください](https://qiita.com/echolimitless/items/83f8658cf855de04b9ce)。 
   
-3. インストール
+3. ライブラリのインストール
   ```sh
   cd 任意のディレクトリ
   git clone https://github.com/kento-nkr/express_lecture
