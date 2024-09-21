@@ -1,5 +1,11 @@
 # express_lecture
 
+## 概要
+- Express.jsを用いたOAuth認証のサンプルコード
+- Google OAuthを用いて認証を行う
+- ユーザー情報(profile)を取得する
+- クライアント側では，Cookieを用いてログイン状態を保持する
+  - 保存するログイン情報は，access_tokenではなく，JWTを用いる
 
 
 ## セットアップ
@@ -102,3 +108,8 @@ node app.js
     ```
     - getやpostの第二引数にverifyTokenを追加することで，認証を行うことができる
     </details>
+
+## OAuthを用いてユーザー情報を取得する方法
+- 現在は[user.idを取得している](https://github.com/NKR-24/express_lecture/blob/9ace666083ece7b544df032508048d98a5da02cd/src/auth_routes.js#L19)が，他の情報も取得することができる
+- まず，GCPのコンソールで，OAuthのスコープを設定することで，取得できる情報を変更することができる
+- メールアドレスやユーザー名，国籍やプロフィール写真などが取得できる
